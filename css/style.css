@@ -1,0 +1,177 @@
+/*Navigation Bar, Responsive, Mobil Friendly*/
+
+/*Here you can define the style for everything that is inside the body tag*/
+body {
+  margin: 0;
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  background-color:white;
+}
+
+/*All text tolor*/
+a {
+  color:black;
+}
+
+/*The header class is going to give style to the top-left area*/
+.header {
+  background-color:#e6e6e6;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+/*With the logo class you can define the style of the top left area (because float:left) you can add text or an image*/
+.logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+  color:black;
+}
+
+/*Here you can make changes to the header */
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color:#e6e6e6;
+}
+
+/*You can add space between the menu items*/
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid grey;
+  text-decoration: none;
+}
+
+/*The hover selector at the menu class will define which style you want to give to all of the items when it's hover*/
+.menu a:hover{
+color:white;
+}
+
+/*The active selector at the menu class will define which style you want to give to all of the items when clicked*/
+.menu a:active{
+	color:black;
+}
+
+/*Every menu item has their own class, so you can choose different style to each one of them*/
+.home a:hover{
+background-color:#F083CC;
+}
+
+.resume a:hover{
+background-color:#4FD7B3;
+}
+
+.portfolio a:hover{
+background-color:#8FE9ED;
+}
+
+.contact a:hover{
+background-color:#FFD34C;
+}
+
+p{
+	padding-top:2cm;
+}
+
+/*menu*/
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/*menu icon*/
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+/*Style the three lines navigation icon. The before is used to add content before the content of an element without need to be in the HTML and the after pseudo-element is usefull to add content after*/
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: black;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/*The menu-btn appear once you are in a smaller device and after you click the three line navicon*/
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+/*To change the three line navicon into an X*/
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0px;
+}
+
+
+/*with @media you can specify at which size you want the screen to change, in this case I choose 48em that is equal to 768px, common table size, and it will fit to a mobile as well*/
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+    
+/*using display:none reserves the three line icon to appear when it shrinks*/
+  .header .menu-icon {
+    display: none;
+  }
